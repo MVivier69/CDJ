@@ -49,7 +49,7 @@ window.SB_CONFIG = {
     titreSection: "À la une",
     texte: "Fête de la Bière - 10 octobre 2026 au Boulodrome",
     image: "./images/alaune.jpg",
-    lien: "https://www.facebook.com/profile.php?id=100064649531361"
+    lien: "https://mvivier69.github.io/CDJ/fetebiere.html"
   },
 
   /* -----------------------------------------------------------------------
