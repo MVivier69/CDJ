@@ -13,7 +13,7 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v1";
+var VERSION = "cdj-v3";
 
 var SOCLE = [
   "./",

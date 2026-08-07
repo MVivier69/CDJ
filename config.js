@@ -26,8 +26,8 @@ window.SB_CONFIG = {
   identite: {
     nom: "Comité de Jumelage Belleville Salzkotten",
     baseline: "Belleville-en-Beaujolais · Salzkotten",
-    logo: "./images/logo.jpg",
-    lienLogo: "https://soleilbeaujolais.fr/"
+    logo: "./images/logo.png",
+    lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com/"
   },
 
   /* -----------------------------------------------------------------------
@@ -38,7 +38,7 @@ window.SB_CONFIG = {
     image: "./images/banniere.jpg",
     texteAlternatif: "Comité de jumelage Belleville-en-Beaujolais et Salzkotten",
     hauteur: 185,
-    lien: "https://soleilbeaujolais.fr/"
+    lien: "https://jumelagebellevillesalzkotten.wordpress.com"
   },
 
   /* -----------------------------------------------------------------------
@@ -61,17 +61,17 @@ window.SB_CONFIG = {
     liste: [
       {
         texte: "Mission",
-        image: "./images/pave/mission.jpg",
+        image: "./images/pave/mission.png",
         lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
       },
       {
         texte: "Agenda",
-        image: "./images/pave/agenda.jpg",
+        image: "./images/pave/agenda.png",
         lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
       },
       {
         texte: "Contact",
-        image: "./images/pave/contact.jpg",
+        image: "./images/pave/contact.png",
         lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
       }
     ]
@@ -112,20 +112,22 @@ window.SB_CONFIG = {
     titreSection: "Infos pratiques",
     adresse: {
       afficher: true,
-      intitule: "  Comité de Jumelage",
+      intitule: "Comité de Jumelage",
       lignes: [
-        "              105 rue de la République",
-        "              69220 Belleville-en-Beaujolais"
+        "105 rue de la République",
+        "69220 Belleville-en-Beaujolais"
       ]
     },
     telephone: {
       afficher: true,
-      intitule: "  Stéphane Schackis",
-      numero: "                  06 01 45 71 81",
+      intitule: "Stéphane Schackis",
+      numero: "06 01 45 71 81"
     },
     mail: {
       afficher: true,
-      adresse: "  comitejumelagebelleville@gmail.com"
+      /* texte affiché juste avant l'adresse ; laisser "" pour n'afficher que l'adresse */
+      intitule: "Ecrire au CDJ",
+      adresse: "comitejumelagebelleville@gmail.com"
     }
   },
 

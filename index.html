@@ -157,9 +157,10 @@
     background:rgba(18,196,238,.13);color:var(--principale);
   }
   .info-ligne .contenu{min-width:0;}
-  .info-ligne .etiquette{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;opacity:.6;}
+  .info-ligne .soustitre{display:block;font-size:.74rem;font-weight:600;opacity:.62;margin-bottom:2px;}
   .info-ligne .valeur{font-size:.95rem;font-weight:600;}
-  .info-ligne .valeur span{display:block;font-weight:500;}
+  .info-ligne .ligne-sec{display:block;font-size:.95rem;font-weight:500;}
+  .info-ligne .apart{margin-left:12px;font-weight:500;white-space:nowrap;}
 
   /* ---------- liens ---------- */
   .liens{display:flex;flex-wrap:wrap;gap:8px;}
@@ -381,11 +382,13 @@
   if (vrai(inf.afficher)) {
     var lignes = [];
 
-    function ligne(picto, lien, etiquette, valeurHtml) {
+    /* La ligne se compose d'un pictogramme (le « logo ») et d'un contenu.
+       Il n'y a plus de libellé texte ADRESSE / TÉLÉPHONE / COURRIEL :
+       le pictogramme suffit à identifier la nature de la ligne. */
+    function ligne(picto, lien, contenuHtml) {
       var dedans =
         '<span class="picto" aria-hidden="true">' + picto + "</span>" +
-        '<span class="contenu"><span class="etiquette">' + ech(etiquette) + "</span>" +
-        '<span class="valeur">' + valeurHtml + "</span></span>";
+        '<span class="contenu">' + contenuHtml + "</span>";
       return lien
         ? '<a class="info-ligne" href="' + ech(lien) + '" target="_blank" rel="noopener">' + dedans + "</a>"
         : '<div class="info-ligne">' + dedans + "</div>";
@@ -400,11 +403,13 @@
     var ad = inf.adresse || {};
     if (vrai(ad.afficher) && Array.isArray(ad.lignes) && ad.lignes.length) {
       var texteAdresse = [ad.intitule].concat(ad.lignes).filter(texteNonVide).join(", ");
-      var valeur = (texteNonVide(ad.intitule) ? ech(ad.intitule) : "") +
-        ad.lignes.filter(texteNonVide).map(function (l) { return "<span>" + ech(l) + "</span>"; }).join("");
+      var valeurAdr = (texteNonVide(ad.intitule) ? '<span class="valeur">' + ech(ad.intitule) + "</span>" : "") +
+        ad.lignes.filter(texteNonVide).map(function (l) {
+          return '<span class="ligne-sec">' + ech(l) + "</span>";
+        }).join("");
       lignes.push(ligne(svg.lieu,
         "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(texteAdresse),
-        "Adresse", valeur));
+        valeurAdr));
     }
 
     var te = inf.telephone || {};
@@ -412,18 +417,23 @@
       /* le lien d'appel ne garde que les chiffres : les espaces de mise en
          forme saisis dans config.js ne peuvent donc pas le perturber */
       var brut = te.numero.replace(/[^0-9+]/g, "");
-      lignes.push(ligne(svg.tel, "tel:" + brut, "Téléphone",
-        (texteNonVide(te.intitule)
-          ? ech(te.intitule) + "<span>" + ech(te.numero) + "</span>"
-          : ech(te.numero))));
+      /* le numéro est affiché juste à côté du nom, sur la même ligne */
+      var valeurTel = texteNonVide(te.intitule)
+        ? '<span class="valeur">' + ech(te.intitule) +
+          '<span class="apart">' + ech(te.numero) + "</span></span>"
+        : '<span class="valeur">' + ech(te.numero) + "</span>";
+      lignes.push(ligne(svg.tel, "tel:" + brut, valeurTel));
     }
 
     var ma = inf.mail || {};
     if (vrai(ma.afficher) && texteNonVide(ma.adresse)) {
       /* même précaution : l'adresse est débarrassée de ses espaces
-         de mise en forme avant d'être placée dans le lien mailto: */
-      lignes.push(ligne(svg.mail, "mailto:" + ma.adresse.replace(/\s+/g, ""),
-        "Courriel", ech(ma.adresse)));
+         de mise en forme avant d'être placée dans le lien mailto:.
+         intitule (facultatif) s'affiche juste avant l'adresse. */
+      var valeurMail =
+        (texteNonVide(ma.intitule) ? '<span class="soustitre">' + ech(ma.intitule) + "</span>" : "") +
+        '<span class="valeur courriel">' + ech(ma.adresse) + "</span>";
+      lignes.push(ligne(svg.mail, "mailto:" + ma.adresse.replace(/\s+/g, ""), valeurMail));
     }
 
     if (lignes.length) {

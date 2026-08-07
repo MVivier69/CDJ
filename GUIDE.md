@@ -21,12 +21,12 @@ Arborescence des images :
 
 ```
 images/
-  logo.jpg              logo rond, en-tête
+  logo.png              logo rond « Place de l'Amitié » (créé sur mesure)
   banniere.jpg          bandeau pleine largeur
   alaune.jpg            encart « Fête de la Bière »
   icone-192.png         icône de l'application installée
   icone-512.png         icône haute définition
-  pave/                 mission · agenda · contact
+  pave/                 mission · agenda · contact  (pictogrammes PNG créés sur mesure)
   galerie/              photo-1 (Europapark) · photo-2 · photo-3
 ```
 
@@ -104,7 +104,7 @@ changer la valeur de `installation.titre` dans `config.js`, ou passer
 | Fichier modifié | Action |
 |---|---|
 | `config.js` ou `images/` | **rien** — repris depuis le réseau |
-| `index.html` ou `sw.js` | incrémenter la version dans `sw.js` : `cdj-v1` → `cdj-v2` |
+| `index.html`, `sw.js`, ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v3` → `cdj-v4` |
 
 ---
 
@@ -165,16 +165,59 @@ une relecture :
    remplacer `identite.lienLogo` par
    `https://jumelagebellevillesalzkotten.wordpress.com/`.
 
-2. **Ligne « Contact » des infos pratiques.** Vous l'aviez intitulée
-   « Contact : Stéphane Schackis - 06 01 45 71 81 ». Comme il s'agit d'un
-   numéro de téléphone, la ligne est présentée avec l'étiquette
-   **« Téléphone »**, le nom « Stéphane Schackis » affiché au-dessus du
-   numéro, et l'appui déclenche l'appel. Si vous préfériez l'étiquette
-   « Contact », c'est une petite adaptation du moteur — dites-le-moi.
+2. **Ligne téléphone.** Le nom « Stéphane Schackis » et le numéro
+   « 06 01 45 71 81 » sont sur la même ligne, le numéro à côté du nom ;
+   l'appui déclenche l'appel. Sur les très petits écrans (largeur ≤ 320 px),
+   le numéro passe proprement à la ligne suivante, sans jamais être coupé.
 
 3. **Sous-titre.** Le nom officiel étant long, j'ai ajouté sous le titre la
    mention « Belleville-en-Beaujolais · Salzkotten », qui figure sur le logo.
    Pour la retirer, vider la valeur `identite.baseline` (`baseline: ""`).
+
+### Logo « Place de l'Amitié »
+
+Le logo de l'en-tête a été recréé à partir du panneau de rue fourni : un
+médaillon émaillé bleu français, bordure blanche à double filet (comme la
+plaque), portant les deux textes conservés — **BELLEVILLE · SALZKOTTEN** en
+arc supérieur et **Place de l'Amitié** au centre (« PLACE » en capitales
+serif, « de l'Amitié » en anglaise). Le motif franco-allemand est donné par
+deux petits cœurs — tricolore français et noir-rouge-or allemand — et par un
+rameau de laurier doré.
+
+L'orthographe exacte du panneau (**SALZKOTTEN**) a été rétablie. Le séparateur
+est un point médian « · » à la place du tiret, choix purement graphique ;
+il se change dans le fichier source si besoin.
+
+Le logo est fourni à part dans `logo-place-amitie/` : PNG 1024 et 512, et le
+**SVG** source (vectoriel, modifiable sans perte — couleurs, textes, polices).
+Polices utilisées : Playfair Display (serif) et Great Vibes (anglaise),
+toutes deux libres (SIL Open Font License).
+
+### Pictogrammes des pavés
+
+Les trois pavés **Mission**, **Agenda** et **Contact** utilisent des
+pictogrammes dessinés sur mesure (PNG 350 × 350, fond transparent), pensés
+comme un ensemble : même style plat, mêmes coins arrondis, et une palette
+franco-allemande commune — bleu français `#003084`, rouge `#CE1126` (commun
+aux deux drapeaux) et or allemand `#F2A100` (proche de l'accent de l'app),
+avec du bleu marine `#1C2340` pour les détails. Cette palette est celle de
+l'application, ce qui fait tenir l'ensemble visuellement.
+
+Les fichiers sources (SVG) et les PNG sont fournis à part dans le dossier
+`logos-pave/` : les SVG permettent de retoucher ou recolorer les
+pictogrammes proprement, sans perte, si besoin.
+
+### Présentation des infos pratiques
+
+Depuis cette version, les infos pratiques ne portent plus de libellé texte
+(ADRESSE / TÉLÉPHONE / COURRIEL) : chaque ligne est identifiée par son seul
+pictogramme (épingle, téléphone, enveloppe). Trois réglages dans `config.js` :
+
+- **Adresse** : `intitule` (en gras) puis les `lignes` en dessous ; l'appui
+  ouvre le plan.
+- **Téléphone** : `intitule` (le nom) et `numero` s'affichent côte à côte.
+- **Courriel** : `intitule` (ici « Ecrire au CDJ ») s'affiche juste avant
+  l'adresse ; laisser `intitule: ""` pour n'afficher que l'adresse.
 
 Par ailleurs, les photos de la galerie sont au format paysage (500 × 250) et
 sont donc recadrées en carré, centré, pour s'aligner en grille. Si un sujet
