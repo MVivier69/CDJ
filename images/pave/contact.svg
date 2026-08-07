@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350" width="350" height="350">
+  <!-- bulle arriere (rouge) -->
+  <path d="M150 66 h118 a30 30 0 0 1 30 30 v56 a30 30 0 0 1 -30 30 h-70 l-30 30 v-30 h-18
+           a30 30 0 0 1 -30 -30 v-56 a30 30 0 0 1 30 -30 Z" fill="#CE1126"/>
+  <!-- bulle avant (bleue) -->
+  <path d="M74 122 h150 a32 32 0 0 1 32 32 v62 a32 32 0 0 1 -32 32 h-92 l-40 40 v-40 h-18
+           a32 32 0 0 1 -32 -32 v-62 a32 32 0 0 1 32 -32 Z" fill="#003084"/>
+  <!-- trois points -->
+  <circle cx="115" cy="185" r="15" fill="#F2A100"/>
+  <circle cx="160" cy="185" r="15" fill="#F2A100"/>
+  <circle cx="205" cy="185" r="15" fill="#F2A100"/>
+</svg>

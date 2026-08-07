@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350" width="350" height="350">
+  <!-- anneaux de reliure -->
+  <rect x="98"  y="60" width="26" height="56" rx="13" fill="#1C2340"/>
+  <rect x="162" y="60" width="26" height="56" rx="13" fill="#1C2340"/>
+  <rect x="226" y="60" width="26" height="56" rx="13" fill="#1C2340"/>
+  <!-- corps -->
+  <rect x="52" y="92" width="246" height="206" rx="28" fill="#FFFFFF" stroke="#003084" stroke-width="16"/>
+  <!-- bandeau -->
+  <path d="M60 118 h230 v8 a0 0 0 0 1 0 0 H60 Z" fill="none"/>
+  <path d="M67 100 h216 a13 13 0 0 1 13 13 v18 H54 v-18 a13 13 0 0 1 13 -13 Z" fill="#CE1126"/>
+  <!-- coche -->
+  <path d="M104 214 L150 258 L246 168" fill="none" stroke="#F2A100"
+        stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
