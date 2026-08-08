@@ -27,7 +27,7 @@ window.SB_CONFIG = {
     nom: "Comité de Jumelage Belleville Salzkotten",
     baseline: "Belleville-en-Beaujolais · Salzkotten",
     logo: "./images/logo.png",
-    lienLogo: "https://soleilbeaujolais.fr/"
+    lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com"
   },
 
   /* -----------------------------------------------------------------------
@@ -38,7 +38,7 @@ window.SB_CONFIG = {
     image: "./images/banniere.jpg",
     texteAlternatif: "Comité de jumelage Belleville-en-Beaujolais et Salzkotten",
     hauteur: 185,
-    lien: "https://soleilbeaujolais.fr/"
+    lien: "https://jumelagebellevillesalzkotten.wordpress.com"
   },
 
   /* -----------------------------------------------------------------------
@@ -47,7 +47,7 @@ window.SB_CONFIG = {
   alaune: {
     afficher: true,
     titreSection: "À la une",
-    texte: "Fête de la Bière",
+    texte: "Fête de la Bière - 10 octobre 2026",
     image: "./images/alaune.jpg",
     lien: "./fete-biere.html"
   },
@@ -62,12 +62,12 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=about"
       },
       {
         texte: "Planning",
         image: "./images/pave/planning.png",
-        lien: "https://1drv.ms/x/c/3659220571e0a401/IQAGfuqWMY7gTqSFh-aQfsGZAWDX0vny06u2p3qnLQzM7o8?e=aQYHqc"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
         texte: "Contact",
@@ -87,7 +87,7 @@ window.SB_CONFIG = {
     titreSection: "Galerie photos",
     liste: [
       {
-        legende: "Europapark",
+        legende: "Sortie à Europapark",
         image: "./images/galerie/photo-1.jpg",
         lien: "./images/galerie/photo-1-image.jpg"
       },
