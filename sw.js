@@ -13,11 +13,12 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v3";
+var VERSION = "cdj-v4";
 
 var SOCLE = [
   "./",
   "./index.html",
+  "./fete-biere.html",
   "./manifest.json",
   "./images/icone-192.png",
   "./images/icone-512.png"

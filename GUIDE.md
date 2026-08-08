@@ -14,6 +14,7 @@ un dossier d'images.
 | `images/` | Les images, rangées par section | Oui |
 | `index.html` | Le moteur : structure, styles, logique d'affichage | Non |
 | `sw.js` | Service worker : cache et fonctionnement hors ligne | Non, sauf § 5 |
+| `fete-biere.html` | Page « À la une » affichant l'affiche | Rarement |
 | `manifest.json` | Nom, icône et couleurs de l'application installée | Rarement |
 | `GUIDE.md` | Ce document | — |
 
@@ -21,17 +22,19 @@ Arborescence des images :
 
 ```
 images/
-  logo.png              logo rond « Place de l'Amitié » (créé sur mesure)
+  logo.png              logo « Place de l'amitié » (poignée de main)
   banniere.jpg          bandeau pleine largeur
-  alaune.jpg            encart « Fête de la Bière »
+  alaune.jpg            vignette de l'encart « Fête de la Bière »
+  fetebiere-2.jpg       affiche affichée par la page fete-biere.html
   icone-192.png         icône de l'application installée
   icone-512.png         icône haute définition
-  pave/                 mission · agenda · contact  (pictogrammes PNG créés sur mesure)
-  galerie/              photo-1 (Europapark) · photo-2 · photo-3
+  pave/                 mission · planning · contact  (pictogrammes PNG créés sur mesure)
+  galerie/              photo-1..3.jpg  = vignettes « appareil photo »
+                        photo-1..3-image.jpg = photos ouvertes au clic
 ```
 
 Sections affichées, dans l'ordre : bannière et identité · **À la une** ·
-**Comité de jumelage** (3 pavés) · **Galerie photos** (3 photos) ·
+**Comité de jumelage** (Mission · Planning · Contact) · **Galerie photos** (3 vignettes) ·
 **Infos pratiques** · **Liens** · pied de page.
 
 ---
@@ -104,16 +107,18 @@ changer la valeur de `installation.titre` dans `config.js`, ou passer
 | Fichier modifié | Action |
 |---|---|
 | `config.js` ou `images/` | **rien** — repris depuis le réseau |
-| `index.html`, `sw.js`, ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v3` → `cdj-v4` |
+| `index.html`, `sw.js`, `fete-biere.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v4` → `cdj-v5` |
 
 ---
 
 ## 6. Contrôles effectués sur cette version
 
-**Liens** — les trois adresses distinctes ont été appelées le 24 juillet 2026 :
-le site Soleil Beaujolais, la page Facebook du comité
-(`profile.php?id=100064649531361`) et le blog WordPress du jumelage. Toutes
-répondent `200`.
+**Liens** — vérifiés en direct. OneDrive (Planning) et Jotform (Contact)
+répondent `200`. Le lien Facebook « événements » (Mission) renvoie `400` à un
+appel automatisé : c'est la réponse habituelle de Facebook aux robots (la page
+de base répond `200`). Il n'a donc pas pu être confirmé par programme — à
+vérifier d'un simple tap. Les liens de la galerie et de « À la une » sont
+internes (fichiers de l'application).
 
 **Rendu** — mesures au pixel dans un navigateur réel (Chromium via Playwright,
 `device_scale_factor: 2`) sur neuf largeurs d'écran (300 → 768 px) : aucun
@@ -174,9 +179,48 @@ une relecture :
    mention « Belleville-en-Beaujolais · Salzkotten », qui figure sur le logo.
    Pour la retirer, vider la valeur `identite.baseline` (`baseline: ""`).
 
-### Logo « Place de l'Amitié »
+### « À la une » : page de l'affiche
 
-Le logo de l'en-tête a été recréé à partir du panneau de rue fourni : un
+« À la une » n'ouvre plus Facebook mais une page interne, `fete-biere.html`,
+qui affiche l'affiche `fetebiere-2.jpg` en grand, avec un bouton
+« Retour à l'application ». Pour changer l'affiche, remplacer le fichier
+`images/fetebiere-2.jpg` (même nom) ; pour changer le texte de la page,
+éditer `fete-biere.html`.
+
+### Liens internes et externes
+
+Le moteur distingue désormais deux cas :
+
+- **lien externe** (commence par `http`, `tel:` ou `mailto:`) : s'ouvre dans
+  un **nouvel onglet**, en préservant l'application ouverte ;
+- **lien interne** (chemin relatif de l'application, comme `./fete-biere.html`
+  ou une image de la galerie) : s'ouvre dans le **même onglet**, pour rester
+  dans l'application et permettre un retour naturel.
+
+Cette distinction est automatique, il n'y a rien à régler dans `config.js`.
+
+### Galerie : vignettes et photos
+
+Chaque vignette de la galerie utilise un logo « appareil photo »
+(`photo-1.jpg` à `photo-3.jpg`, mis au format carré sur fond blanc) ; l'appui
+ouvre la photo correspondante (`photo-1-image.jpg` à `photo-3-image.jpg`).
+Les légendes — Europapark, Souvenirs de voyage, Match Tennis de Table
+Salzkotten — ont été conservées de la version précédente ; elles se changent
+dans `galerie.liste`.
+
+### Logo « Place de l'amitié »
+
+Le logo de l'en-tête est celui que vous avez fourni (`logo.png`) : le
+médaillon bleu à la poignée de main franco-allemande et au texte
+« Place de l'amitié ». Les icônes d'installation ont été régénérées à partir
+de ce logo.
+
+### Ancien logo « Place de l'Amitié » (médaillon dessiné)
+
+> Remplacé par le logo à la poignée de main ci-dessus ; conservé ici pour
+> mémoire, et disponible dans `logo-place-amitie/` si vous souhaitez y revenir.
+
+Ce médaillon avait été recréé à partir du panneau de rue fourni : un
 médaillon émaillé bleu français, bordure blanche à double filet (comme la
 plaque), portant les deux textes conservés — **BELLEVILLE · SALZKOTTEN** en
 arc supérieur et **Place de l'Amitié** au centre (« PLACE » en capitales

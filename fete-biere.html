@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fête de la Bière — Comité de Jumelage</title>
+<meta name="description" content="Affiche de la Fête de la Bière organisée par le Comité de Jumelage Belleville-en-Beaujolais et Salzkotten.">
+<meta name="theme-color" content="#003084">
+<link rel="icon" href="./images/icone-192.png">
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#0a1b3a;
+    color:#eaf0fb;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    min-height:100vh;
+    display:flex;flex-direction:column;
+  }
+  header{
+    display:flex;align-items:center;gap:12px;
+    padding:calc(12px + env(safe-area-inset-top)) 16px 12px;
+    background:#003084;
+  }
+  header img{width:40px;height:40px;border-radius:50%;flex:0 0 auto;}
+  header .t{min-width:0;}
+  header h1{margin:0;font-size:1.05rem;line-height:1.15;font-weight:700;}
+  header p{margin:1px 0 0;font-size:.76rem;opacity:.8;}
+  main{
+    flex:1 1 auto;
+    display:flex;justify-content:center;align-items:flex-start;
+    padding:16px 12px calc(24px + env(safe-area-inset-bottom));
+  }
+  .affiche{
+    width:100%;max-width:560px;
+    border-radius:14px;overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+    background:#fff;
+  }
+  .affiche img{display:block;width:100%;height:auto;}
+  .retour{
+    display:inline-flex;align-items:center;gap:7px;
+    margin:0 auto;
+    padding:10px 18px;border-radius:999px;
+    background:#003084;color:#fff;font-size:.9rem;font-weight:600;
+    text-decoration:none;border:1px solid rgba(255,255,255,.2);
+  }
+  footer{
+    display:flex;justify-content:center;
+    padding:0 16px calc(20px + env(safe-area-inset-bottom));
+  }
+  a:focus-visible{outline:3px solid #F2A100;outline-offset:2px;}
+</style>
+</head>
+<body>
+  <header>
+    <img src="./images/logo.png" alt="">
+    <div class="t">
+      <h1>Fête de la Bière</h1>
+      <p>Comité de Jumelage Belleville-en-Beaujolais · Salzkotten</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="affiche">
+      <img src="./images/fetebiere-2.jpg"
+           alt="Affiche de la Fête de la Bière : le 10 octobre 2026 à partir de 18 h au boulodrome de Belleville-en-Beaujolais. Repas sur réservation, restauration et animation musicale.">
+    </div>
+  </main>
+
+  <footer>
+    <a class="retour" href="./index.html">← Retour à l'application</a>
+  </footer>
+</body>
+</html>

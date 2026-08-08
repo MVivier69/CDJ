@@ -267,6 +267,14 @@
       });
   }
   function vrai(v) { return v !== false; }
+
+  /* Liens externes (http, tel, mail) : nouvel onglet + rel de sécurité.
+     Liens internes (pages ou images relatives de l'app) : même onglet,
+     pour rester dans l'application et garder une navigation cohérente. */
+  function cible(url) {
+    return /^(https?:|tel:|mailto:)/i.test(String(url || ""))
+      ? ' target="_blank" rel="noopener"' : "";
+  }
   function texteNonVide(v) { return typeof v === "string" && v.trim() !== ""; }
 
   /* --- couleurs --- */
@@ -293,7 +301,7 @@
     if (ban.hauteur) style.setProperty("--hauteur-banniere", parseInt(ban.hauteur, 10) + "px");
     var img = '<img src="' + ech(ban.image) + '" alt="' + ech(ban.texteAlternatif || "") + '">';
     html.push(texteNonVide(ban.lien)
-      ? '<a class="banniere" href="' + ech(ban.lien) + '" target="_blank" rel="noopener">' + img + "</a>"
+      ? '<a class="banniere" href="' + ech(ban.lien) + '"' + cible(ban.lien) + '>' + img + "</a>"
       : '<div class="banniere">' + img + "</div>");
   }
 
@@ -305,7 +313,7 @@
       (texteNonVide(ident.baseline) ? "<p>" + ech(ident.baseline) + "</p>" : "") +
       "</div>";
     html.push(texteNonVide(ident.lienLogo)
-      ? '<a class="identite" href="' + ech(ident.lienLogo) + '" target="_blank" rel="noopener">' + bloc + "</a>"
+      ? '<a class="identite" href="' + ech(ident.lienLogo) + '"' + cible(ident.lienLogo) + '>' + bloc + "</a>"
       : '<div class="identite">' + bloc + "</div>");
   }
 
@@ -323,7 +331,7 @@
       'stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" ' +
       'aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
     return texteNonVide(item.lien)
-      ? '<a class="alaune encart" href="' + ech(item.lien) + '" target="_blank" rel="noopener">' + interieur + "</a>"
+      ? '<a class="alaune encart" href="' + ech(item.lien) + '"' + cible(item.lien) + '>' + interieur + "</a>"
       : '<div class="alaune encart">' + interieur + "</div>";
   }
 
@@ -346,7 +354,7 @@
         (texteNonVide(p.image) ? '<img src="' + ech(p.image) + '" alt="">' : "") +
         '<span class="libelle">' + ech(p.texte) + "</span>";
       return texteNonVide(p.lien)
-        ? '<a class="pave" href="' + ech(p.lien) + '" target="_blank" rel="noopener">' + dedans + "</a>"
+        ? '<a class="pave" href="' + ech(p.lien) + '"' + cible(p.lien) + '>' + dedans + "</a>"
         : '<div class="pave">' + dedans + "</div>";
     }).join("");
     html.push('<div class="grille">' + cases + "</div>");
@@ -361,7 +369,7 @@
         (texteNonVide(p.image) ? '<img src="' + ech(p.image) + '" alt="' + ech(p.legende || "") + '">' : "") +
         (texteNonVide(p.legende) ? '<span class="legende">' + ech(p.legende) + "</span>" : "");
       return texteNonVide(p.lien)
-        ? '<a class="vignette" href="' + ech(p.lien) + '" target="_blank" rel="noopener">' + dedans + "</a>"
+        ? '<a class="vignette" href="' + ech(p.lien) + '"' + cible(p.lien) + '>' + dedans + "</a>"
         : '<div class="vignette">' + dedans + "</div>";
     }).join("");
     html.push('<div class="grille grille-galerie">' + vignettes + "</div>");
@@ -390,7 +398,7 @@
         '<span class="picto" aria-hidden="true">' + picto + "</span>" +
         '<span class="contenu">' + contenuHtml + "</span>";
       return lien
-        ? '<a class="info-ligne" href="' + ech(lien) + '" target="_blank" rel="noopener">' + dedans + "</a>"
+        ? '<a class="info-ligne" href="' + ech(lien) + '"' + cible(lien) + '>' + dedans + "</a>"
         : '<div class="info-ligne">' + dedans + "</div>";
     }
 
@@ -448,7 +456,7 @@
     var puces = li.liste.filter(function (l) {
       return l && vrai(l.afficher) && texteNonVide(l.texte) && texteNonVide(l.lien);
     }).map(function (l) {
-      return '<a class="lien-puce" href="' + ech(l.lien) + '" target="_blank" rel="noopener">' +
+      return '<a class="lien-puce" href="' + ech(l.lien) + '"' + cible(l.lien) + '>' +
              ech(l.texte) + "</a>";
     }).join("");
     if (puces) {
@@ -467,7 +475,7 @@
   var pd = C.piedDePage || {};
   if (vrai(pd.afficher) && texteNonVide(pd.texte)) {
     html.push('<div class="pied">' + (texteNonVide(pd.lien)
-      ? '<a href="' + ech(pd.lien) + '" target="_blank" rel="noopener">' + ech(pd.texte) + "</a>"
+      ? '<a href="' + ech(pd.lien) + '"' + cible(pd.lien) + '>' + ech(pd.texte) + "</a>"
       : ech(pd.texte)) + "</div>");
   }
 

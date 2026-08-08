@@ -27,7 +27,7 @@ window.SB_CONFIG = {
     nom: "Comité de Jumelage Belleville Salzkotten",
     baseline: "Belleville-en-Beaujolais · Salzkotten",
     logo: "./images/logo.png",
-    lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com/"
+    lienLogo: "https://soleilbeaujolais.fr/"
   },
 
   /* -----------------------------------------------------------------------
@@ -38,7 +38,7 @@ window.SB_CONFIG = {
     image: "./images/banniere.jpg",
     texteAlternatif: "Comité de jumelage Belleville-en-Beaujolais et Salzkotten",
     hauteur: 185,
-    lien: "https://jumelagebellevillesalzkotten.wordpress.com"
+    lien: "https://soleilbeaujolais.fr/"
   },
 
   /* -----------------------------------------------------------------------
@@ -47,9 +47,9 @@ window.SB_CONFIG = {
   alaune: {
     afficher: true,
     titreSection: "À la une",
-    texte: "Fête de la Bière - Boulodrome 10 octobre 2026",
+    texte: "Fête de la Bière",
     image: "./images/alaune.jpg",
-    lien: "https://www.facebook.com/profile.php?id=100064649531361"
+    lien: "./fete-biere.html"
   },
 
   /* -----------------------------------------------------------------------
@@ -62,25 +62,25 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
-        texte: "Agenda",
-        image: "./images/pave/agenda.png",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        texte: "Planning",
+        image: "./images/pave/planning.png",
+        lien: "https://1drv.ms/x/c/3659220571e0a401/IQAGfuqWMY7gTqSFh-aQfsGZAWDX0vny06u2p3qnLQzM7o8?e=aQYHqc"
       },
       {
         texte: "Contact",
         image: "./images/pave/contact.png",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        lien: "https://form.jotform.com/262192300967357"
       }
     ]
   },
 
   /* -----------------------------------------------------------------------
      5. GALERIE PHOTOS
-     Les photos fournies sont au format paysage : elles sont recadrées en
-     carré (centré) pour s'aligner en grille. La légende s'affiche dessous.
+     Chaque vignette utilise un logo « appareil photo » ; l'appui ouvre la
+     photo correspondante (fichier image, dans le dossier galerie).
      ----------------------------------------------------------------------- */
   galerie: {
     afficher: true,
@@ -89,17 +89,17 @@ window.SB_CONFIG = {
       {
         legende: "Europapark",
         image: "./images/galerie/photo-1.jpg",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        lien: "./images/galerie/photo-1-image.jpg"
       },
       {
         legende: "Souvenirs de voyage",
         image: "./images/galerie/photo-2.jpg",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        lien: "./images/galerie/photo-2-image.jpg"
       },
       {
         legende: "Match Tennis de Table Salzkotten",
         image: "./images/galerie/photo-3.jpg",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        lien: "./images/galerie/photo-3-image.jpg"
       }
     ]
   },
