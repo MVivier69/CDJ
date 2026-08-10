@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Match Tennis de Table — Salzkotten</title>
+<meta name="description" content="Photos du match amical de tennis de table Salzkotten – Belleville-en-Beaujolais.">
+<meta name="theme-color" content="#003084">
+<link rel="icon" href="./images/icone-192.png">
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  :root{--bleu:#003084;--or:#F2A100;}
+  html,body{margin:0;height:100%;}
+  body{
+    background:#0a1b3a;color:#eaf0fb;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    display:flex;flex-direction:column;min-height:100vh;
+  }
+  header{
+    display:flex;align-items:center;gap:12px;
+    padding:calc(11px + env(safe-area-inset-top)) 16px 11px;
+    background:var(--bleu);flex:0 0 auto;
+  }
+  header img{width:38px;height:38px;border-radius:50%;flex:0 0 auto;}
+  header h1{margin:0;font-size:1rem;line-height:1.15;font-weight:700;}
+  header p{margin:1px 0 0;font-size:.74rem;opacity:.8;}
+
+  main{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
+
+  .scene{
+    position:relative;flex:1 1 auto;min-height:0;
+    display:flex;align-items:center;justify-content:center;
+    padding:12px;overflow:hidden;touch-action:pan-y;
+  }
+  .scene img.photo{
+    max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
+    box-shadow:0 8px 30px rgba(0,0,0,.5);background:#0a1b3a;
+    user-select:none;-webkit-user-drag:none;
+  }
+  .etat{opacity:.75;font-size:.92rem;text-align:center;padding:24px;max-width:32ch;}
+
+  .fleche{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+    background:rgba(0,48,132,.82);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.4);
+  }
+  .fleche:active{transform:translateY(-50%) scale(.94);}
+  .fleche.prev{left:10px;} .fleche.suiv{right:10px;}
+  .fleche[hidden]{display:none;}
+
+  .compteur{
+    position:absolute;top:12px;right:14px;
+    background:rgba(0,0,0,.5);border-radius:999px;
+    padding:4px 11px;font-size:.8rem;font-weight:600;
+  }
+  .compteur[hidden]{display:none;}
+
+  .points{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;padding:10px 12px 4px;flex:0 0 auto;}
+  .points button{width:9px;height:9px;padding:0;border:0;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.32);}
+  .points button[aria-current="true"]{background:var(--or);transform:scale(1.25);}
+
+  .miniatures{
+    display:flex;gap:8px;overflow-x:auto;flex:0 0 auto;
+    padding:8px 12px calc(10px + env(safe-area-inset-bottom));
+    -webkit-overflow-scrolling:touch;scrollbar-width:thin;
+  }
+  .miniatures img{height:52px;width:78px;object-fit:cover;border-radius:7px;cursor:pointer;opacity:.55;flex:0 0 auto;border:2px solid transparent;}
+  .miniatures img[aria-current="true"]{opacity:1;border-color:var(--or);}
+
+  footer{display:flex;justify-content:center;flex:0 0 auto;padding:6px 16px calc(16px + env(safe-area-inset-bottom));background:#081530;}
+  .retour{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:999px;text-decoration:none;background:var(--bleu);color:#fff;font-size:.9rem;font-weight:600;border:1px solid rgba(255,255,255,.2);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--or);outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+  <header>
+    <img src="./images/logo.png" alt="">
+    <div>
+      <h1>Match Tennis de Table</h1>
+      <p>Salzkotten – Belleville-en-Beaujolais</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="scene" id="scene">
+      <button class="fleche prev" id="prev" type="button" aria-label="Photo précédente" hidden>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <img class="photo" id="photo" alt="" hidden>
+      <div class="etat" id="etat">Chargement des photos…</div>
+      <button class="fleche suiv" id="suiv" type="button" aria-label="Photo suivante" hidden>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="compteur" id="compteur" hidden>1 / 1</div>
+    </div>
+
+    <div class="points" id="points" role="tablist" aria-label="Choisir une photo"></div>
+    <div class="miniatures" id="miniatures"></div>
+  </main>
+
+  <footer>
+    <a class="retour" href="./index.html">← Retour à l'application</a>
+  </footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* =======================================================================
+     RÉGLAGES DU CARROUSEL
+     -----------------------------------------------------------------------
+     Le carrousel affiche automatiquement les photos du dossier ci-dessous.
+     Deux mécanismes se complètent, sans rien coder :
+
+     1. Sur GitHub Pages : le dossier est listé via l'API GitHub (dépôt
+        public). Vous pouvez déposer les photos avec N'IMPORTE QUEL nom, en
+        n'importe quel nombre ; elles apparaissent triées par nom.
+        (Pour choisir l'ordre, préfixez les noms : 01-, 02-, 03-…)
+
+     2. Ailleurs, ou si l'API n'est pas joignable : repli automatique qui
+        teste "1.jpg", "2.jpg", … OU "<prefixe>1.jpg", "<prefixe>2.jpg", …
+        jusqu'à la première manquante. Il faut alors des noms numérotés
+        qui se suivent.
+
+     Pour figer une liste précise, renseigner LISTE (elle a priorité).
+     ======================================================================= */
+  var REGLAGES = {
+    dossier: "images/galerie/tt/",   // dossier des photos (relatif à cette page)
+    branche: "main",                 // branche GitHub (souvent "main", parfois "master")
+
+    repliPrefixe: "tt-",             // préfixe des noms pour le repli séquentiel
+    repliExtension: ".jpg",          // extension pour le repli séquentiel
+    repliMax: 300,                   // sécurité : nombre maximal testé
+
+    LISTE: null                      // ex. ["images/galerie/tt/a.jpg","..."] pour figer
+  };
+
+  /* --------------------------- utilitaires --------------------------- */
+  function estImage(n){ return /\.(jpe?g|png|webp|gif|avif)$/i.test(n); }
+  function triNaturel(a,b){ return a.localeCompare(b, undefined, {numeric:true, sensitivity:"base"}); }
+  function joindre(dossier, nom){ return dossier.replace(/\/$/,"") + "/" + nom; }
+
+  function apiGitHub(dossier, branche){
+    var m = location.hostname.match(/^([^.]+)\.github\.io$/i);
+    if(!m) return null;
+    var owner = m[1];
+    var segs = location.pathname.split("/").filter(Boolean);
+    if(segs.length && /\.html?$/i.test(segs[segs.length-1])) segs = segs.slice(0,-1);
+    var repo, prefixe;
+    if(segs.length===0){ repo = owner + ".github.io"; prefixe = ""; }
+    else { repo = segs[0]; prefixe = segs.slice(1).join("/"); }
+    var chemin = (prefixe ? prefixe + "/" : "") + String(dossier).replace(/^\.?\//,"").replace(/\/$/,"");
+    return "https://api.github.com/repos/"+owner+"/"+repo+"/contents/"+chemin+"?ref="+branche;
+  }
+
+  function existe(url){
+    return new Promise(function(res){
+      var im = new Image();
+      im.onload = function(){ res(true); };
+      im.onerror = function(){ res(false); };
+      im.src = url;
+    });
+  }
+
+  /* teste <prefixe>1,<prefixe>2,… (puis, à défaut, 1,2,…) ; s'arrête au premier trou.
+     Un unique 404 « de fin » est normal : c'est ainsi qu'on détecte la dernière photo. */
+  function repliSequentiel(){
+    var d = REGLAGES.dossier, ext = REGLAGES.repliExtension, pref = REGLAGES.repliPrefixe;
+    var avecPrefixe = function(i){ return joindre(d, pref+i+ext); };
+    var sansPrefixe = function(i){ return joindre(d, i+ext); };
+    return existe(avecPrefixe(1)).then(function(ok){
+      if(ok) return parcourir(avecPrefixe, [avecPrefixe(1)]);
+      return existe(sansPrefixe(1)).then(function(ok2){
+        if(ok2) return parcourir(sansPrefixe, [sansPrefixe(1)]);
+        return [];
+      });
+    });
+    function parcourir(modele, liste){
+      function suite(i){
+        if(i > REGLAGES.repliMax) return Promise.resolve(liste);
+        var url = modele(i);
+        return existe(url).then(function(ok){
+          if(!ok) return liste;
+          liste.push(url);
+          return suite(i+1);
+        });
+      }
+      return suite(2);
+    }
+  }
+
+  function listeViaGitHub(){
+    var url = apiGitHub(REGLAGES.dossier, REGLAGES.branche);
+    if(!url) return Promise.resolve(null);
+    return fetch(url, {headers:{Accept:"application/vnd.github+json"}})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        if(!Array.isArray(j)) return null;
+        var noms = j.filter(function(e){ return e && e.type==="file" && estImage(e.name); })
+                    .map(function(e){ return e.name; }).sort(triNaturel);
+        if(!noms.length) return null;
+        return noms.map(function(n){ return joindre(REGLAGES.dossier, n); });
+      })
+      .catch(function(){ return null; });
+  }
+
+  function resoudreListe(){
+    if(Array.isArray(REGLAGES.LISTE) && REGLAGES.LISTE.length) return Promise.resolve(REGLAGES.LISTE.slice());
+    var cle = "carrousel:" + REGLAGES.dossier;
+    try {
+      var cache = sessionStorage.getItem(cle);
+      if(cache){ var arr = JSON.parse(cache); if(Array.isArray(arr) && arr.length) return Promise.resolve(arr); }
+    } catch(e){}
+    return listeViaGitHub().then(function(l){
+      return l || repliSequentiel();
+    }).then(function(l){
+      l = l || [];
+      try { sessionStorage.setItem(cle, JSON.stringify(l)); } catch(e){}
+      return l;
+    });
+  }
+
+  /* --------------------------- construction --------------------------- */
+  var photo = document.getElementById("photo");
+  var etat = document.getElementById("etat");
+  var compteur = document.getElementById("compteur");
+  var pPrev = document.getElementById("prev");
+  var pSuiv = document.getElementById("suiv");
+  var zPoints = document.getElementById("points");
+  var zMini = document.getElementById("miniatures");
+  var scene = document.getElementById("scene");
+
+  resoudreListe().then(function(images){
+    if(!images.length){
+      etat.textContent = "Aucune photo pour le moment.";
+      return;
+    }
+    demarrer(images);
+  });
+
+  function demarrer(images){
+    var N = images.length, i = 0, points = [], minis = [];
+    var multiple = N > 1;
+
+    etat.hidden = true;
+    photo.hidden = false;
+    compteur.hidden = !multiple;
+    pPrev.hidden = !multiple;
+    pSuiv.hidden = !multiple;
+
+    if(multiple){
+      images.forEach(function(src, idx){
+        var b = document.createElement("button");
+        b.type = "button"; b.setAttribute("role","tab");
+        b.setAttribute("aria-label","Photo "+(idx+1));
+        b.addEventListener("click", function(){ aller(idx); });
+        zPoints.appendChild(b); points.push(b);
+
+        var m = document.createElement("img");
+        m.src = src; m.alt = "Miniature "+(idx+1); m.loading = "lazy";
+        m.addEventListener("click", function(){ aller(idx); });
+        zMini.appendChild(m); minis.push(m);
+      });
+    }
+
+    function precharger(idx){
+      [idx-1, idx+1].forEach(function(j){ if(j>=0 && j<N){ var im=new Image(); im.src=images[j]; } });
+    }
+    function aller(idx){
+      i = (idx + N) % N;
+      photo.src = images[i];
+      photo.alt = "Photo " + (i+1) + " sur " + N;
+      if(multiple){
+        compteur.textContent = (i+1) + " / " + N;
+        points.forEach(function(b,j){ b.setAttribute("aria-current", j===i ? "true":"false"); });
+        minis.forEach(function(m,j){
+          m.setAttribute("aria-current", j===i ? "true":"false");
+          if(j===i) m.scrollIntoView({block:"nearest", inline:"center"});
+        });
+        precharger(i);
+      }
+    }
+
+    if(multiple){
+      pPrev.addEventListener("click", function(){ aller(i-1); });
+      pSuiv.addEventListener("click", function(){ aller(i+1); });
+      document.addEventListener("keydown", function(e){
+        if(e.key==="ArrowLeft") aller(i-1);
+        else if(e.key==="ArrowRight") aller(i+1);
+      });
+      var x0 = null;
+      scene.addEventListener("touchstart", function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+      scene.addEventListener("touchend", function(e){
+        if(x0===null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if(Math.abs(dx) > 40) aller(dx<0 ? i+1 : i-1);
+        x0 = null;
+      }, {passive:true});
+    }
+
+    aller(0);
+  }
+})();
+</script>
+</body>
+</html>

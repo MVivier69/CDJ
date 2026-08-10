@@ -27,18 +27,20 @@ window.SB_CONFIG = {
     nom: "Comité de Jumelage Belleville Salzkotten",
     baseline: "Belleville-en-Beaujolais · Salzkotten",
     logo: "./images/logo.png",
-    lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com"
+    lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com/"
   },
 
   /* -----------------------------------------------------------------------
      2. BANNIÈRE
+     Image pleine largeur en haut de l'écran, affichée en ENTIER (son format
+     est respecté, il n'y a aucun recadrage). Fournir de préférence une image
+     déjà au bon rapport largeur/hauteur.
      ----------------------------------------------------------------------- */
   banniere: {
     afficher: true,
     image: "./images/banniere.jpg",
     texteAlternatif: "Comité de jumelage Belleville-en-Beaujolais et Salzkotten",
-    hauteur: 185,
-    lien: "https://jumelagebellevillesalzkotten.wordpress.com"
+    lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
   },
 
   /* -----------------------------------------------------------------------
@@ -47,7 +49,7 @@ window.SB_CONFIG = {
   alaune: {
     afficher: true,
     titreSection: "À la une",
-    texte: "Fête de la Bière - 10 octobre 2026",
+    texte: "Fête de la Bière",
     image: "./images/alaune.jpg",
     lien: "./fete-biere.html"
   },
@@ -62,7 +64,7 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=about"
+        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
       },
       {
         texte: "Planning",
@@ -87,7 +89,7 @@ window.SB_CONFIG = {
     titreSection: "Galerie photos",
     liste: [
       {
-        legende: "Sortie à Europapark",
+        legende: "Europapark",
         image: "./images/galerie/photo-1.jpg",
         lien: "./images/galerie/photo-1-image.jpg"
       },
@@ -99,7 +101,7 @@ window.SB_CONFIG = {
       {
         legende: "Match Tennis de Table Salzkotten",
         image: "./images/galerie/photo-3.jpg",
-        lien: "./images/galerie/photo-3-image.jpg"
+        lien: "./galerie-tt.html"
       }
     ]
   },

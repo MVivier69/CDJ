@@ -58,7 +58,7 @@
     overflow:hidden;
     background:var(--principale);
   }
-  .banniere img{width:100%;height:var(--hauteur-banniere,130px);object-fit:cover;}
+  .banniere img{width:100%;height:auto;display:block;}
 
   .identite{
     display:flex;align-items:center;gap:12px;
@@ -298,7 +298,7 @@
   /* ---------- bannière ---------- */
   var ban = C.banniere || {};
   if (vrai(ban.afficher) && texteNonVide(ban.image)) {
-    if (ban.hauteur) style.setProperty("--hauteur-banniere", parseInt(ban.hauteur, 10) + "px");
+    /* la bannière s'affiche en entier, à son format naturel (aucun recadrage) */
     var img = '<img src="' + ech(ban.image) + '" alt="' + ech(ban.texteAlternatif || "") + '">';
     html.push(texteNonVide(ban.lien)
       ? '<a class="banniere" href="' + ech(ban.lien) + '"' + cible(ban.lien) + '>' + img + "</a>"

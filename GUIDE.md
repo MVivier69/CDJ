@@ -15,6 +15,7 @@ un dossier d'images.
 | `index.html` | Le moteur : structure, styles, logique d'affichage | Non |
 | `sw.js` | Service worker : cache et fonctionnement hors ligne | Non, sauf § 5 |
 | `fete-biere.html` | Page « À la une » affichant l'affiche | Rarement |
+| `galerie-tt.html` | Carrousel des 9 photos (ouvert par la vignette 3) | Rarement |
 | `manifest.json` | Nom, icône et couleurs de l'application installée | Rarement |
 | `GUIDE.md` | Ce document | — |
 
@@ -26,11 +27,12 @@ images/
   banniere.jpg          bandeau pleine largeur
   alaune.jpg            vignette de l'encart « Fête de la Bière »
   fetebiere-2.jpg       affiche affichée par la page fete-biere.html
-  icone-192.png         icône de l'application installée
-  icone-512.png         icône haute définition
+  icone-192.png         icône de l'application installée (fournie)
+  icone-512.png         icône haute définition (fournie)
   pave/                 mission · planning · contact  (pictogrammes PNG créés sur mesure)
-  galerie/              photo-1..3.jpg  = vignettes « appareil photo »
-                        photo-1..3-image.jpg = photos ouvertes au clic
+  galerie/              photo-1..3.jpg = vignettes « appareil photo »
+                        photo-1..2-image.jpg = photos ouvertes au clic (vignettes 1 et 2)
+                        tt/tt-1..9.jpg = les 9 photos du carrousel (vignette 3)
 ```
 
 Sections affichées, dans l'ordre : bannière et identité · **À la une** ·
@@ -107,7 +109,7 @@ changer la valeur de `installation.titre` dans `config.js`, ou passer
 | Fichier modifié | Action |
 |---|---|
 | `config.js` ou `images/` | **rien** — repris depuis le réseau |
-| `index.html`, `sw.js`, `fete-biere.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v4` → `cdj-v5` |
+| `index.html`, `sw.js`, une page `.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v6` → `cdj-v7` |
 
 ---
 
@@ -178,6 +180,59 @@ une relecture :
 3. **Sous-titre.** Le nom officiel étant long, j'ai ajouté sous le titre la
    mention « Belleville-en-Beaujolais · Salzkotten », qui figure sur le logo.
    Pour la retirer, vider la valeur `identite.baseline` (`baseline: ""`).
+
+### Bannière plein format
+
+La bannière s'affiche désormais **en entier**, à son format naturel, sans
+aucun recadrage : la ligne « Belleville-en-Beaujolais & Salzkotten » du bas
+reste toujours visible, quelle que soit la largeur de l'écran. Sa hauteur
+s'ajuste automatiquement au rapport de l'image ; il n'y a plus de réglage de
+hauteur à faire dans `config.js`. Pour changer la bannière, remplacer
+`images/banniere.jpg` (idéalement au même rapport largeur/hauteur).
+
+### Logo et icônes fournis
+
+Le logo `logo.png` et les deux icônes d'installation `icone-192.png` /
+`icone-512.png` que vous avez fournis sont utilisés **tels quels** (les icônes
+ne sont plus générées automatiquement). Pour les changer, remplacer les
+fichiers correspondants en conservant leurs noms.
+
+### Galerie : la 3ᵉ vignette ouvre un carrousel
+
+Les deux premières vignettes (Europapark, Souvenirs de voyage) ouvrent chacune
+leur photo. La **3ᵉ vignette** (Match Tennis de Table) ouvre un **carrousel**
+des 9 photos, sur la page `galerie-tt.html` : flèches, points, bande de
+miniatures, glissement tactile et flèches du clavier, et bouton « Retour ».
+
+**Le carrousel est dynamique** : il lit automatiquement le dossier
+`images/galerie/tt/`, quel que soit le nombre de photos. Il n'y a plus aucun
+nombre à régler.
+
+Deux mécanismes se complètent, sans rien coder :
+
+1. **Sur GitHub Pages** — le dossier est listé via l'API GitHub (dépôt
+   public). Vous pouvez déposer les photos avec **n'importe quel nom**, en
+   n'importe quel nombre ; elles apparaissent, triées par nom. Pour maîtriser
+   l'ordre, préfixez les noms : `01-...`, `02-...`, `03-...`
+2. **Ailleurs, ou si l'API n'est pas joignable** — repli automatique qui teste
+   `tt-1.jpg`, `tt-2.jpg`, … (ou `1.jpg`, `2.jpg`, …) jusqu'à la première
+   manquante. Il faut alors des noms **numérotés qui se suivent, sans trou**.
+
+Points de fonctionnement à connaître :
+
+- **Une seule photo** : les flèches, points et miniatures disparaissent d'eux-mêmes.
+- **Aucune photo** : un message « Aucune photo pour le moment. » s'affiche.
+- Le repli produit **un seul `404` en fin de liste** (la façon de repérer la
+  dernière photo) : c'est normal, invisible à l'écran, sans effet.
+- Les réglages (dossier, branche, préfixe du repli, ou une liste figée) sont
+  regroupés et commentés en tête du script de `galerie-tt.html`, sous
+  `REGLAGES`. La branche par défaut est `main` ; si votre dépôt utilise
+  `master`, changer cette valeur.
+- Les photos issues de smartphones sont **remises à l'endroit** (orientation
+  EXIF appliquée) pour éviter tout affichage couché. Si vous ajoutez des
+  photos via l'interface GitHub, la plupart des navigateurs respectent
+  l'orientation ; en cas de photo couchée, la faire pivoter avant de la
+  déposer.
 
 ### « À la une » : page de l'affiche
 
