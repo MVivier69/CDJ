@@ -64,13 +64,13 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361"
       },
       {
         texte: "Planning",
         image: "./images/pave/planning.png",
         lien:
-https://www.facebook.com/profile.php?id=100064649531361&sk=events"
+"https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
         texte: "Contact",
