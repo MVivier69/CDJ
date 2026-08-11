@@ -64,12 +64,12 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://jumelagebellevillesalzkotten.wordpress.com/"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
         texte: "Planning",
         image: "./images/pave/planning.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
+        lien: "https://1drv.ms/x/c/3659220571e0a401/IQAGfuqWMY7gTqSFh-aQfsGZAWDX0vny06u2p3qnLQzM7o8?e=aQYHqc"
       },
       {
         texte: "Contact",
@@ -81,28 +81,21 @@ window.SB_CONFIG = {
 
   /* -----------------------------------------------------------------------
      5. GALERIE PHOTOS
-     Chaque vignette utilise un logo « appareil photo » ; l'appui ouvre la
-     photo correspondante (fichier image, dans le dossier galerie).
+     Six pavés, chacun ouvre un carrousel (page carousel.html) qui affiche
+     automatiquement les photos de son dossier. Le paramètre « c= » du lien
+     choisit la catégorie ; les catégories et leurs dossiers sont définis en
+     tête de carousel.html.
      ----------------------------------------------------------------------- */
   galerie: {
     afficher: true,
     titreSection: "Galerie photos",
     liste: [
-      {
-        legende: "Europapark",
-        image: "./images/galerie/photo-1.jpg",
-        lien: "./images/galerie/photo-1-image.jpg"
-      },
-      {
-        legende: "Souvenirs de voyage",
-        image: "./images/galerie/photo-2.jpg",
-        lien: "./images/galerie/photo-2-image.jpg"
-      },
-      {
-        legende: "Match Tennis de Table Salzkotten",
-        image: "./images/galerie/photo-3.jpg",
-        lien: "./galerie-tt.html"
-      }
+      { legende: "Souvenirs",             image: "./images/galerie/photo-1.jpg", lien: "./carousel.html?c=souvenirs" },
+      { legende: "Sorties",               image: "./images/galerie/photo-2.jpg", lien: "./carousel.html?c=sorties" },
+      { legende: "Match Tennis de Table", image: "./images/galerie/photo-3.jpg", lien: "./carousel.html?c=tt" },
+      { legende: "Jumelage",              image: "./images/galerie/photo-4.jpg", lien: "./carousel.html?c=jumelage" },
+      { legende: "Deutsch Unterricht",    image: "./images/galerie/photo-5.jpg", lien: "./carousel.html?c=deutsch" },
+      { legende: "Dîner en blanc",        image: "./images/galerie/photo-6.jpg", lien: "./carousel.html?c=diner" }
     ]
   },
 

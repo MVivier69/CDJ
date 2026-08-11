@@ -13,13 +13,13 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v6";
+var VERSION = "cdj-v7";
 
 var SOCLE = [
   "./",
   "./index.html",
   "./fete-biere.html",
-  "./galerie-tt.html",
+  "./carousel.html",
   "./manifest.json",
   "./images/icone-192.png",
   "./images/icone-512.png"
@@ -49,6 +49,23 @@ self.addEventListener("fetch", function (e) {
 
   var url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+
+  // La page carrousel est identique quel que soit le paramètre « ?c= » :
+  // on sert la version cachée (sans paramètre) pour que toutes les catégories
+  // fonctionnent hors ligne dès la première visite de n'importe laquelle.
+  if (url.pathname.slice(-13) === "carousel.html") {
+    var clef = url.origin + url.pathname;
+    e.respondWith(
+      caches.match(clef).then(function (rep) {
+        return rep || fetch(req).then(function (r) {
+          var copie = r.clone();
+          caches.open(VERSION).then(function (c) { c.put(clef, copie); });
+          return r;
+        });
+      })
+    );
+    return;
+  }
 
   var contenu = url.pathname.indexOf("config.js") !== -1 ||
                 url.pathname.indexOf("/images/") !== -1;
