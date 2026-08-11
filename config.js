@@ -69,7 +69,8 @@ window.SB_CONFIG = {
       {
         texte: "Planning",
         image: "./images/pave/planning.png",
-        lien: "https://1drv.ms/x/c/3659220571e0a401/IQAGfuqWMY7gTqSFh-aQfsGZAWDX0vny06u2p3qnLQzM7o8?e=aQYHqc"
+        lien:
+https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
         texte: "Contact",
