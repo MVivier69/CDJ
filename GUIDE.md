@@ -113,7 +113,7 @@ changer la valeur de `installation.titre` dans `config.js`, ou passer
 | Fichier modifié | Action |
 |---|---|
 | `config.js` ou `images/` | **rien** — repris depuis le réseau |
-| `index.html`, `sw.js`, une page `.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v7` → `cdj-v8` |
+| `index.html`, `sw.js`, une page `.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v8` → `cdj-v9` |
 
 ---
 
@@ -229,6 +229,14 @@ et un pavé dans `galerie.liste` (config.js).
 
 Les photos de smartphone sont **remises à l'endroit** (orientation EXIF
 appliquée) et allégées à 1600 px de côté au maximum.
+
+### Bouton « Retour » des pages annexes
+
+Sur `carousel.html` et `fete-biere.html`, le bouton de retour est placé **en
+haut à droite, dans le bandeau bleu**, en format compact. Le pied de page a
+été supprimé : l'affiche et les photos disposent ainsi de toute la hauteur.
+Sur les écrans très étroits (moins de 360 px), le mot « Retour » s'efface
+automatiquement et seule la flèche reste, pour ne jamais chevaucher le titre.
 
 ### « À la une » : page de l'affiche
 
