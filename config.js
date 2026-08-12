@@ -67,7 +67,7 @@ window.SB_CONFIG = {
         lien: "https://www.facebook.com/profile.php?id=100064649531361"
       },
       {
-        texte: "Planning",
+        texte: "Agenda",
         image: "./images/pave/planning.png",
         lien:
 "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
