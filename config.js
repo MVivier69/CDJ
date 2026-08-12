@@ -70,7 +70,7 @@ window.SB_CONFIG = {
         texte: "Planning",
         image: "./images/pave/planning.png",
         lien:
-"https://teamup.com/c/qak3cz"
+"https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
         texte: "Contact",
