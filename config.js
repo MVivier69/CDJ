@@ -24,7 +24,7 @@ window.SB_CONFIG = {
      1. IDENTITÉ
      ----------------------------------------------------------------------- */
   identite: {
-    nom: "Comité de Jumelage Belleville Salzkotten",
+    nom: "Comité de Jumelage",
     baseline: "Belleville-en-Beaujolais · Salzkotten",
     logo: "./images/logo.png",
     lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com/"
