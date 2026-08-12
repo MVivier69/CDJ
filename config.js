@@ -24,7 +24,7 @@ window.SB_CONFIG = {
      1. IDENTITÉ
      ----------------------------------------------------------------------- */
   identite: {
-    nom: "Comité de Jumelage Belleville Salzkotten",
+    nom: "Comité de Jumelage",
     baseline: "Belleville-en-Beaujolais · Salzkotten",
     logo: "./images/logo.png",
     lienLogo: "https://jumelagebellevillesalzkotten.wordpress.com/"
@@ -49,7 +49,7 @@ window.SB_CONFIG = {
   alaune: {
     afficher: true,
     titreSection: "À la une",
-    texte: "Fête de la Bière",
+    texte: "Fête de la Bière - Boulodrome 10 octobre 2026",
     image: "./images/alaune.jpg",
     lien: "./fete-biere.html"
   },
@@ -64,12 +64,12 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361"
       },
       {
-        texte: "Planning",
+        texte: "Agenda",
         image: "./images/pave/planning.png",
-        lien: "https://1drv.ms/x/c/3659220571e0a401/IQAGfuqWMY7gTqSFh-aQfsGZAWDX0vny06u2p3qnLQzM7o8?e=aQYHqc"
+        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
       },
       {
         texte: "Contact",
