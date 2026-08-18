@@ -64,7 +64,7 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361"
+        lien: "https://mvivier69.github.io/webCDJ/#mission"
       },
       {
         texte: "Agenda",
