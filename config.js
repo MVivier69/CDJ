@@ -69,7 +69,7 @@ window.SB_CONFIG = {
       {
         texte: "Agenda",
         image: "./images/pave/planning.png",
-        lien: "https://www.facebook.com/profile.php?id=100064649531361&sk=events"
+        lien: "https://mvivier69.github.io/webCDJ/#agenda"
       },
       {
         texte: "Contact",
