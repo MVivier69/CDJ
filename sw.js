@@ -7,13 +7,14 @@
       Il ne change que rarement. Quand il change, il FAUT incrementer
       le numero de version ci-dessous : sb-v1 -> sb-v2, etc.
 
-   2. LE CONTENU (config.js et tout le dossier images/) est recupere
+   2. LE CONTENU (config.js, tout le dossier images/ et le dossier
+      « CDJ News », mis a jour chaque lundi) est recupere
       en priorite depuis le reseau. Une modification de texte, de lien
       ou d'image apparait donc des le rechargement suivant, SANS avoir
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v8";
+var VERSION = "cdj-v9";
 
 var SOCLE = [
   "./",
@@ -68,7 +69,8 @@ self.addEventListener("fetch", function (e) {
   }
 
   var contenu = url.pathname.indexOf("config.js") !== -1 ||
-                url.pathname.indexOf("/images/") !== -1;
+                url.pathname.indexOf("/images/") !== -1 ||
+                decodeURIComponent(url.pathname).indexOf("/CDJ News/") !== -1;
 
   if (contenu) {
     /* reseau d'abord, cache en secours */
