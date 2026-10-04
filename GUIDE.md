@@ -25,6 +25,7 @@ Arborescence des images :
 images/
   logo.png              logo « Place de l'amitié » (poignée de main)
   banniere.jpg          bandeau pleine largeur
+  news.png              logo de la zone « News »
   alaune.jpg            vignette de l'encart « Fête de la Bière »
   fetebiere-2.jpg       affiche affichée par la page fete-biere.html
   icone-192.png         icône de l'application installée (fournie)
@@ -40,8 +41,8 @@ images/
 ```
 
 Sections affichées, dans l'ordre : bannière et identité · **À la une** ·
-**Comité de jumelage** (Mission · Planning · Contact) · **Galerie photos** (3 vignettes) ·
-**Infos pratiques** · **Liens** · pied de page.
+**Comité de jumelage** (Mission · Agenda · Contact) · **News** ·
+**Galerie photos** (6 pavés) · **Infos pratiques** · **Liens** · pied de page.
 
 ---
 
@@ -113,7 +114,7 @@ changer la valeur de `installation.titre` dans `config.js`, ou passer
 | Fichier modifié | Action |
 |---|---|
 | `config.js` ou `images/` | **rien** — repris depuis le réseau |
-| `index.html`, `sw.js`, une page `.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v8` → `cdj-v9` |
+| `index.html`, `sw.js`, une page `.html` ou les **icônes** | incrémenter la version dans `sw.js` : `cdj-v9` → `cdj-v10` |
 
 ---
 
@@ -237,6 +238,30 @@ haut à droite, dans le bandeau bleu**, en format compact. Le pied de page a
 été supprimé : l'affiche et les photos disposent ainsi de toute la hauteur.
 Sur les écrans très étroits (moins de 360 px), le mot « Retour » s'efface
 automatiquement et seule la flèche reste, pour ne jamais chevaucher le titre.
+
+### Zone « News »
+
+Placée juste après les pavés « Comité de jumelage », la zone **News** a
+exactement la même structure que « À la une » : un logo, un texte, et un lien.
+Elle se règle dans `config.js`, section 5 :
+
+```js
+news: {
+  afficher: true,
+  titreSection: "News",
+  texte: "News de l'univers des jumelages",
+  image: "./images/news.png",
+  lien: "https://mvivier69.github.io/CDJ/CDJ%20News/CDJ%20News%20-%20Synth%C3%A8se.html"
+},
+```
+
+Pour changer le logo, remplacer `images/news.png` (image carrée de préférence,
+elle est affichée en 78 × 78 pixels). Pour masquer la zone sans rien effacer :
+`afficher: false`. Le lien étant externe, il s'ouvre dans un nouvel onglet.
+
+Note : l'adresse contient des caractères encodés (`%20` pour un espace,
+`%C3%A8` pour « è »). C'est normal et nécessaire — ne pas les remplacer par les
+caractères d'origine, le lien cesserait de fonctionner.
 
 ### « À la une » : page de l'affiche
 

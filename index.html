@@ -360,6 +360,18 @@
     html.push('<div class="grille">' + cases + "</div>");
   }
 
+  /* ---------- news ----------
+     Même structure que « À la une » : un encart large (logo + texte + flèche).
+     Placé juste après les pavés « Comité de jumelage ». */
+  var nw = C.news || {};
+  if (vrai(nw.afficher)) {
+    var carteNews = encart(nw);
+    if (carteNews) {
+      html.push(titre(nw.titreSection));
+      html.push(carteNews);
+    }
+  }
+
   /* ---------- galerie ---------- */
   var ga = C.galerie || {};
   if (vrai(ga.afficher) && Array.isArray(ga.liste) && ga.liste.length) {

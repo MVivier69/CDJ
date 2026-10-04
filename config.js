@@ -80,7 +80,20 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     5. GALERIE PHOTOS
+     5. NEWS
+     Même structure que « À la une » : un logo, un texte, un lien.
+     Pour masquer cette zone : afficher: false
+     ----------------------------------------------------------------------- */
+  news: {
+    afficher: true,
+    titreSection: "News",
+    texte: "News de l'univers des jumelages",
+    image: "./images/news.png",
+    lien: "https://mvivier69.github.io/CDJ/CDJ%20News/CDJ%20News%20-%20Synth%C3%A8se.html"
+  },
+
+  /* -----------------------------------------------------------------------
+     6. GALERIE PHOTOS
      Six pavés, chacun ouvre un carrousel (page carousel.html) qui affiche
      automatiquement les photos de son dossier. Le paramètre « c= » du lien
      choisit la catégorie ; les catégories et leurs dossiers sont définis en
@@ -100,7 +113,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     6. INFOS PRATIQUES
+     7. INFOS PRATIQUES
      ----------------------------------------------------------------------- */
   infos: {
     afficher: true,
@@ -127,7 +140,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     7. LIENS
+     8. LIENS
      ----------------------------------------------------------------------- */
   liens: {
     afficher: true,
@@ -138,7 +151,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     8. CARTE D'INSTALLATION
+     9. CARTE D'INSTALLATION
      ----------------------------------------------------------------------- */
   installation: {
     afficher: true,
@@ -150,7 +163,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     9. PIED DE PAGE
+     10. PIED DE PAGE
      ----------------------------------------------------------------------- */
   piedDePage: {
     afficher: true,
@@ -159,7 +172,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     10. COULEURS
+     11. COULEURS
      Relevées sur les fichiers fournis : bleu marine du logo et des
      pictogrammes, bleu et ambre de la bannière (thème franco-allemand).
      ----------------------------------------------------------------------- */
