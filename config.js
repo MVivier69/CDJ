@@ -49,7 +49,7 @@ window.SB_CONFIG = {
   alaune: {
     afficher: true,
     titreSection: "À la une",
-    texte: "Fête de la Bière - Boulodrome 10 octobre 2026",
+    texte: "Ascension 2027 - Match de tennis de table",
     image: "./images/alaune.jpg",
     lien: "./fete-biere.html"
   },
