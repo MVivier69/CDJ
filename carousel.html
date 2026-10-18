@@ -142,28 +142,58 @@
      CATÉGORIES DES CARROUSELS
      -----------------------------------------------------------------------
      Chaque pavé de la galerie ouvre cette page avec un paramètre « c= »
-     (ex. carousel.html?c=souvenirs). La catégorie fixe le titre, le
+     (ex. carousel.html?c=Souvenirs). La catégorie fixe le titre, le
      dossier des photos et le préfixe utilisé par le repli séquentiel.
 
      Le carrousel est dynamique : il affiche automatiquement les photos du
      dossier, quel que soit leur nombre (voir plus bas). Pour AJOUTER une
      nouvelle catégorie : créer le dossier, y déposer les photos, ajouter
      une entrée ici, et ajouter un pavé dans config.js.
+
+     Le nom écrit dans config.js (après « ?c= ») doit correspondre à l'un
+     des noms de la première colonne ci-dessous. Les majuscules n'ont pas
+     d'importance : « ?c=Jumelage », « ?c=jumelage » et « ?c=JUMELAGE »
+     donnent le même résultat.
+
+     « dossier » est l'endroit où sont déposées les photos sur GitHub.
+     « prefixe » ne sert que de secours, si l'API GitHub était injoignable :
+     il correspond au début du nom des fichiers photo déjà en place
+     (js-1.jpg, sv-1.jpg, tt-1.jpg, sr-1.jpg…), qu'il est donc inutile de
+     renommer. Pour les trois dossiers encore vides, nommer les futures
+     photos db-1.jpg…, fb-1.jpg… et du-1.jpg…
      ======================================================================= */
   var CATEGORIES = {
-    souvenirs: { titre: "Souvenirs",             sous: "Comité de Jumelage",                    dossier: "images/galerie/sv/", prefixe: "sv-" },
-    sorties:   { titre: "Sorties",               sous: "Comité de Jumelage",                    dossier: "images/galerie/sr/", prefixe: "sr-" },
-    tt:        { titre: "Match Tennis de Table", sous: "Salzkotten – Belleville-en-Beaujolais", dossier: "images/galerie/tt/", prefixe: "tt-" },
-    jumelage:  { titre: "Jumelage",              sous: "Comité de Jumelage",                    dossier: "images/galerie/js/", prefixe: "js-" },
-    deutsch:   { titre: "Deutsch Unterricht",    sous: "Comité de Jumelage",                    dossier: "images/galerie/du/", prefixe: "du-" },
-    diner:     { titre: "Dîner en blanc",        sous: "Comité de Jumelage",                    dossier: "images/galerie/db/", prefixe: "db-" }
+    Jumelage:   { titre: "Jumelage",              sous: "Comité de Jumelage",                    dossier: "images/galerie/jumelage/",   prefixe: "js-" },
+    DinerBlanc: { titre: "Dîner en blanc",        sous: "Comité de Jumelage",                    dossier: "images/galerie/dinerblanc/", prefixe: "db-" },
+    FeteBiere:  { titre: "Fête de la Bière",      sous: "Comité de Jumelage",                    dossier: "images/galerie/fetebiere/",  prefixe: "fb-" },
+    Souvenirs:  { titre: "Souvenirs",             sous: "Comité de Jumelage",                    dossier: "images/galerie/souvenirs/",  prefixe: "sv-" },
+    Tennis:     { titre: "Match Tennis de Table", sous: "Salzkotten – Belleville-en-Beaujolais", dossier: "images/galerie/tennis/",     prefixe: "tt-" },
+    Deutsch:    { titre: "Deutsch Unterricht",    sous: "Comité de Jumelage",                    dossier: "images/galerie/deutsch/",    prefixe: "du-" },
+    Sorties:    { titre: "Sorties",               sous: "Comité de Jumelage",                    dossier: "images/galerie/sorties/",    prefixe: "sr-" }
   };
+
+  /* catégorie affichée si « c= » est absent ou inconnu */
+  var CATEGORIE_PAR_DEFAUT = "Tennis";
 
   function param(nom){
     var m = new RegExp("[?&]" + nom + "=([^&]+)").exec(location.search);
     return m ? decodeURIComponent(m[1]) : "";
   }
-  var CAT = CATEGORIES[param("c")] || CATEGORIES.tt;
+
+  /* Recherche de la catégorie SANS tenir compte des majuscules : une
+     majuscule oubliée dans config.js ne fait plus basculer le pavé sur
+     la mauvaise galerie. */
+  function trouverCategorie(nom){
+    var cherche = String(nom || "").trim().toLowerCase();
+    if (!cherche) return null;
+    for (var cle in CATEGORIES) {
+      if (Object.prototype.hasOwnProperty.call(CATEGORIES, cle) &&
+          cle.toLowerCase() === cherche) return CATEGORIES[cle];
+    }
+    return null;
+  }
+
+  var CAT = trouverCategorie(param("c")) || CATEGORIES[CATEGORIE_PAR_DEFAUT];
 
   document.getElementById("titre").textContent = CAT.titre;
   document.getElementById("sous").textContent = CAT.sous || "";
