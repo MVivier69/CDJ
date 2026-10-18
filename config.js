@@ -62,17 +62,17 @@ window.SB_CONFIG = {
     titreSection: "Comité de jumelage",
     liste: [
       {
-        texte: "-->",
+        texte: "",
         image: "./images/pave/mission.png",
         lien: "./MissionCDJ.html"
       },
       {
-        texte: "-->",
+        texte: "",
         image: "./images/pave/agenda.png",
         lien: "./AgendaCDJ.html"
       },
       {
-        texte: "-->",
+        texte: "",
         image: "./images/pave/contact.png",
         lien: "./ContactCDJ.html"
       }
