@@ -14,8 +14,12 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v12";
+var VERSION = "cdj-v13";
 
+/* SOCLE : le strict necessaire au demarrage de l'application. Ces fichiers
+   sont charges d'un bloc : si l'un d'eux manque sur GitHub, l'installation
+   echoue ENTIEREMENT et l'application perd son fonctionnement hors ligne.
+   N'ajouter ici que des fichiers dont on est certain qu'ils existent. */
 var SOCLE = [
   "./",
   "./index.html",
@@ -25,10 +29,31 @@ var SOCLE = [
   "./images/icone-512.png"
 ];
 
+/* PAGES : les pages de contenu, pre-chargees pour etre consultables hors
+   ligne SANS avoir ete ouvertes au prealable. Elles sont lourdes (leur
+   affiche est integree dans le fichier), environ 10,7 Mo au total.
+   Elles sont chargees UNE PAR UNE et un echec est tolere : une page
+   absente, renommee, ou une coupure de reseau en cours de telechargement
+   n'empeche pas l'application de s'installer et de fonctionner.
+   Pour ajouter une page : ecrire son nom ici, exactement comme sur GitHub
+   (les majuscules comptent), et incrementer la VERSION ci-dessus. */
+var PAGES = [
+  "./MatchTdT.html",
+  "./MissionCDJ.html",
+  "./AgendaCDJ.html",
+  "./ContactCDJ.html"
+];
+
 self.addEventListener("install", function (e) {
   e.waitUntil(
     caches.open(VERSION)
-      .then(function (c) { return c.addAll(SOCLE); })
+      .then(function (c) {
+        return c.addAll(SOCLE).then(function () {
+          return Promise.all(PAGES.map(function (u) {
+            return c.add(u).catch(function () { /* page ignoree */ });
+          }));
+        });
+      })
       .then(function () { return self.skipWaiting(); })
   );
 });
