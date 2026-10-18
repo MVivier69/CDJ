@@ -74,7 +74,7 @@ window.SB_CONFIG = {
       {
         texte: "Contact",
         image: "./images/pave/contact.png",
-        lien: "https://form.jotform.com/262192300967357"
+        lien: "./ContactCDJ.html"
       }
     ]
   },
