@@ -64,12 +64,12 @@ window.SB_CONFIG = {
       {
         texte: "Mission",
         image: "./images/pave/mission.png",
-        lien: "https://mvivier69.github.io/webCDJ/#mission"
+        lien: "./MissionCDJ.html"
       },
       {
         texte: "Agenda",
         image: "./images/pave/planning.png",
-        lien: "https://mvivier69.github.io/webCDJ/#agenda"
+        lien: "./AgendaCDJ.html"
       },
       {
         texte: "Contact",
