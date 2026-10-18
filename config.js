@@ -103,12 +103,10 @@ window.SB_CONFIG = {
     afficher: true,
     titreSection: "Galerie photos",
     liste: [
-      { legende: "Souvenirs",             image: "./images/galerie/photo-1.jpg", lien: "./carousel.html?c=souvenirs" },
-      { legende: "Sorties",               image: "./images/galerie/photo-2.jpg", lien: "./carousel.html?c=sorties" },
-      { legende: "Match Tennis de Table", image: "./images/galerie/photo-3.jpg", lien: "./carousel.html?c=tt" },
-      { legende: "Jumelage",              image: "./images/galerie/photo-4.jpg", lien: "./carousel.html?c=jumelage" },
-      { legende: "Deutsch Unterricht",    image: "./images/galerie/photo-5.jpg", lien: "./carousel.html?c=deutsch" },
-      { legende: "Dîner en blanc",        image: "./images/galerie/photo-6.jpg", lien: "./carousel.html?c=diner" }
+      { legende: "",             image: "./images/galerie/jumelage.png", lien: "./carousel.html?c=jumelage" },
+      { legende: "",             image: "./images/galerie/diner.png", lien: "./carousel.html?c=diner" },
+      { legende: "",             image: "./images/galerie/biere.png", lien: "./carousel.html?c=biere" },
+      { legende: "",             image: "./images/galerie/souvenirs.png", lien: "./carousel.html?c=souvenirs" }
     ]
   },
 
