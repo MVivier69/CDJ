@@ -94,19 +94,42 @@ window.SB_CONFIG = {
 
   /* -----------------------------------------------------------------------
      6. GALERIE PHOTOS
-     Six pavés, chacun ouvre un carrousel (page carousel.html) qui affiche
-     automatiquement les photos de son dossier. Le paramètre « c= » du lien
-     choisit la catégorie ; les catégories et leurs dossiers sont définis en
-     tête de carousel.html.
+     Chaque pavé ouvre un carrousel (page carousel.html) qui affiche
+     automatiquement les photos de son dossier.
+
+     COMMENT LE LIEN FONCTIONNE
+       Le paramètre « c= » du lien doit correspondre EXACTEMENT, majuscules
+       comprises, à une clé déclarée dans CATEGORIES, en tête de
+       carousel.html. Si le nom ne correspond pas, le carrousel retombe
+       silencieusement sur sa catégorie par défaut : le pavé semble marcher
+       mais montre les mauvaises photos.
+
+       lien du pavé     clé dans carousel.html   dossier des photos
+       ---------------  -----------------------  ---------------------------
+       ?c=Jumelage      Jumelage                 images/galerie/jumelage/
+       ?c=DinerBlanc    DinerBlanc               images/galerie/dinerblanc/
+       ?c=FeteBiere     FeteBiere                images/galerie/fetebiere/
+       ?c=Souvenirs     Souvenirs                images/galerie/souvenirs/
+       ?c=Tennis        Tennis                   images/galerie/tennis/
+       ?c=Deutsch       Deutsch                  images/galerie/deutsch/
+       ?c=Sorties       Sorties                  images/galerie/sorties/
+
+     Les quatre premiers pavés s'affichent sur UNE SEULE LIGNE.
+     Les deux derniers sont prêts mais masqués : passer leur « afficher »
+     à true suffit à les activer (ils iront alors à la ligne suivante).
      ----------------------------------------------------------------------- */
   galerie: {
     afficher: true,
     titreSection: "Galerie photos",
     liste: [
-      { legende: "",             image: "./images/galerie/jumelage.png", lien: "./carousel.html?c=Jumelage" },
-      { legende: "",             image: "./images/galerie/diner.png", lien: "./carousel.html?c=DinerBlanc" },
-      { legende: "",             image: "./images/galerie/biere.png", lien: "./carousel.html?c=FeteBiere" },
-      { legende: "",             image: "./images/galerie/souvenirs.png", lien: "./carousel.html?c=Souvenirs" }
+      { legende: "", image: "./images/galerie/jumelage.png",  lien: "./carousel.html?c=Jumelage" },
+      { legende: "", image: "./images/galerie/diner.png",     lien: "./carousel.html?c=DinerBlanc" },
+      { legende: "", image: "./images/galerie/biere.png",     lien: "./carousel.html?c=FeteBiere" },
+      { legende: "", image: "./images/galerie/souvenirs.png", lien: "./carousel.html?c=Souvenirs" },
+
+      /* --- réservés pour plus tard : mettre afficher à true pour activer --- */
+      { legende: "", image: "./images/galerie/tennis.png",  lien: "./carousel.html?c=Tennis",  afficher: false },
+      { legende: "", image: "./images/galerie/deutsch.png", lien: "./carousel.html?c=Deutsch", afficher: false }
     ]
   },
 
