@@ -68,7 +68,7 @@ window.SB_CONFIG = {
       },
       {
         texte: "Agenda",
-        image: "./images/pave/planning.png",
+        image: "./images/pave/agenda.png",
         lien: "./AgendaCDJ.html"
       },
       {
