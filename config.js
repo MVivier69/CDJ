@@ -103,10 +103,10 @@ window.SB_CONFIG = {
     afficher: true,
     titreSection: "Galerie photos",
     liste: [
-      { legende: "",             image: "./images/galerie/jumelage.png", lien: "./carousel.html?c=jumelage" },
-      { legende: "",             image: "./images/galerie/diner.png", lien: "./carousel.html?c=diner" },
-      { legende: "",             image: "./images/galerie/biere.png", lien: "./carousel.html?c=biere" },
-      { legende: "",             image: "./images/galerie/souvenirs.png", lien: "./carousel.html?c=souvenirs" }
+      { legende: "",             image: "./images/galerie/jumelage.png", lien: "./carousel.html?c=Jumelage" },
+      { legende: "",             image: "./images/galerie/diner.png", lien: "./carousel.html?c=DinerBlanc" },
+      { legende: "",             image: "./images/galerie/biere.png", lien: "./carousel.html?c=FeteBiere" },
+      { legende: "",             image: "./images/galerie/souvenirs.png", lien: "./carousel.html?c=Souvenirs" }
     ]
   },
 
