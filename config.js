@@ -50,7 +50,7 @@ window.SB_CONFIG = {
     afficher: true,
     titreSection: "À la une",
     texte: "Ascension 2027 - Match de tennis de table",
-    image: "./images/alaune.jpg",
+    image: "./images/alaune.png",
     lien: "./MatchTdT.html"
   },
 
