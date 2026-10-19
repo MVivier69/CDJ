@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CDJ News - Synthèse</title>
+<style>
+body{margin:0;background:#ffffff;color:#000000;font-family:Arial,Helvetica,sans-serif;font-size:11pt;line-height:1.3}
+.page{max-width:8.5in;margin:0 auto;padding:1cm;box-sizing:border-box}
+.entete{position:relative;margin:6pt 0 12pt 0}
+.entete .cdj{margin:0;padding-top:4pt;font-size:40pt;font-weight:bold;font-style:italic;color:#C00000;letter-spacing:1pt;line-height:1.1}
+h1{margin:6pt 0 14pt 0;padding:6pt 4pt;background:#E2E2E2;border:3pt solid #C00000;text-align:center;font-size:15pt}
+ul{list-style:none;margin:0;padding:0}
+li{border-bottom:1px solid #D0D0D0;padding:10pt 4pt}
+li a{display:block;color:#000000;font-weight:bold;text-decoration:underline}
+.date{display:block;margin-top:3pt;font-style:italic;font-size:10pt;color:#595959}
+.pied{margin-top:18pt;font-size:10pt}
+.pied p{margin:0}
+.pied a{color:#467886}
+.entete .retour{position:absolute;top:0;right:0;display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:2px solid #C00000;border-radius:999px;background:#ffffff;color:#C00000;font-size:10pt;font-weight:bold;line-height:1;white-space:nowrap;text-decoration:none}
+.entete .retour:hover,.entete .retour:focus-visible{background:#C00000;color:#ffffff}
+@media (max-width:640px){.page{padding:16px}.entete .cdj{font-size:30pt}}
+@media (max-width:480px){.entete{padding-top:38px}}
+@media print{.entete .retour{display:none}}
+</style></head><body><div class="page">
+<div class="entete"><p class="cdj">CDJ News</p><a class="retour" id="retour" href="https://mvivier69.github.io/CDJ/" title="Retour à la page précédente">←<span class="mot">Retour</span></a></div>
+<h1>Les 10 dernières news</h1>
+<ul>
+<li><a href="2026-10-14%20Wassy%20et%20Eppingen%20f%C3%AAtent%2060%20ans%20d%E2%80%99amiti%C3%A9.html">Wassy et Eppingen fêtent 60 ans d’amitié</a><span class="date">Article du 14 octobre 2026</span></li>
+<li><a href="2026-10-13%20Oktoberfest%20%C3%A0%20guichets%20ferm%C3%A9s%20%C3%A0%20Blanzy.html">Oktoberfest à guichets fermés à Blanzy</a><span class="date">Article du 13 octobre 2026</span></li>
+<li><a href="2026-10-09%20Garanci%C3%A8res%20accueille%20ses%20amis%20de%20Scheden.html">Garancières accueille ses amis de Scheden</a><span class="date">Article du 9 octobre 2026</span></li>
+<li><a href="2026-10-09%20Pamiers%20et%20Crailsheim%20veulent%20se%20relancer.html">Pamiers et Crailsheim veulent se relancer</a><span class="date">Article du 9 octobre 2026</span></li>
+<li><a href="2026-10-06%20Pavie%20et%20Villanueva%20jouent%20la%20m%C3%AAme%20partition.html">Pavie et Villanueva jouent la même partition</a><span class="date">Article du 6 octobre 2026</span></li>
+<li><a href="2026-10-05%20Montceau%20et%20%C5%BBory%2C%2020%20ans%20de%20jumelage.html">Montceau et Żory, 20 ans de jumelage</a><span class="date">Article du 5 octobre 2026</span></li>
+<li><a href="2026-10-05%20Le%20gorgonzola%20de%20Novara%20%C3%A0%20la%20foire%20de%20Chalon.html">Le gorgonzola de Novara à la foire de Chalon</a><span class="date">Article du 5 octobre 2026</span></li>
+<li><a href="2026-10-04%20Pr%C3%A8s%20de%2080%20Lislois%20en%20Italie%20pour%20les%2030%20ans.html">Près de 80 Lislois en Italie pour les 30 ans</a><span class="date">Article du 4 octobre 2026</span></li>
+<li><a href="2026-09-29%20Linselles%20et%20Willich%2C%2060%20ans%20d%E2%80%99amiti%C3%A9.html">Linselles et Willich, 60 ans d’amitié</a><span class="date">Article du 29 septembre 2026</span></li>
+<li><a href="2026-09-24%20Longeau-Percey%20pr%C3%A9pare%20les%2055%20ans%20avec%20Dave.html">Longeau-Percey prépare les 55 ans avec Dave</a><span class="date">Article du 24 septembre 2026</span></li>
+</ul>
+<div class="pied"><p class="date">Mise à jour le 19/10/2026</p>
+<p><b>Comité de Jumelage Belleville/Salzkotten</b></p>
+<p>Mail <a href="mailto:comitejumelagebelleville@gmail.com">comitejumelagebelleville@gmail.com</a></p></div>
+</div>
+<script>
+(function () {
+  var accueil = "https://mvivier69.github.io/CDJ/", cle = "cdjNewsSyntheseRetour";
+  var a = document.getElementById("retour");
+  if (!a) return;
+  function pageNews(u) {
+    try { return decodeURIComponent(u).indexOf("/CDJ News/") !== -1; } catch (e) { return true; }
+  }
+  var ref = document.referrer || "", cible = "";
+  if (ref && !pageNews(ref)) cible = ref;
+  try {
+    if (cible) sessionStorage.setItem(cle, cible);
+    else cible = sessionStorage.getItem(cle) || "";
+  } catch (e) {}
+  a.href = cible || accueil;
+})();
+</script>
+</body></html>
