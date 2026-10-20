@@ -283,8 +283,21 @@
      Liens internes (pages ou images relatives de l'app) : même onglet,
      pour rester dans l'application et garder une navigation cohérente. */
   function cible(url) {
-    return /^(https?:|tel:|mailto:)/i.test(String(url || ""))
-      ? ' target="_blank" rel="noopener"' : "";
+    var u = String(url || "");
+    /* appel telephonique et courriel : laisses au systeme */
+    if (/^(tel:|mailto:)/i.test(u)) return ' target="_blank" rel="noopener"';
+    if (/^https?:/i.test(u)) {
+      /* Une adresse complete qui pointe vers le MEME site que l'application
+         (meme nom de domaine) est une page de l'application : elle s'ouvre
+         dans la fenetre active, comme un lien relatif. Seuls les sites
+         exterieurs — WordPress, Facebook, Jotform, OneDrive… — s'ouvrent
+         dans un nouvel onglet. */
+      try {
+        if (new URL(u, location.href).origin === location.origin) return "";
+      } catch (e) { /* adresse illisible : traitee comme exterieure */ }
+      return ' target="_blank" rel="noopener"';
+    }
+    return "";
   }
   function texteNonVide(v) { return typeof v === "string" && v.trim() !== ""; }
 

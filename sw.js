@@ -14,7 +14,7 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v13";
+var VERSION = "cdj-v14";
 
 /* SOCLE : le strict necessaire au demarrage de l'application. Ces fichiers
    sont charges d'un bloc : si l'un d'eux manque sur GitHub, l'installation
