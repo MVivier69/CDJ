@@ -54,6 +54,24 @@ li a{display:block;color:#000000;font-weight:bold;text-decoration:underline}
     else cible = sessionStorage.getItem(cle) || "";
   } catch (e) {}
   a.href = cible || accueil;
+
+  /* Retour DANS la fenetre active : on remonte d'un cran dans l'historique
+     au lieu de recharger l'application. Elle reprend ainsi a l'endroit exact
+     ou elle avait ete quittee, et l'historique ne s'allonge pas a chaque
+     aller-retour. Si aucun retour n'est possible — page ouverte dans un
+     onglet neuf, acces direct, favori — le lien ordinaire prend le relais. */
+  if (ref && !pageNews(ref) && history.length > 1) {
+    a.addEventListener("click", function (e) {
+      /* on laisse le navigateur faire si l'utilisateur demande un onglet */
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      var depart = location.href;
+      history.back();
+      setTimeout(function () {
+        if (location.href === depart) location.href = a.href;
+      }, 400);
+    });
+  }
 })();
 </script>
 </body></html>
