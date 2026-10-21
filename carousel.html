@@ -53,8 +53,10 @@
   .fleche.prev{left:10px;} .fleche.suiv{right:10px;}
   .fleche[hidden]{display:none;}
 
+  /* Le compteur passe a GAUCHE : le coin haut-droit est desormais occupe
+     par la pilule de retour, qui flotte au-dessus de la photo. */
   .compteur{
-    position:absolute;top:12px;right:14px;
+    position:absolute;top:12px;left:14px;
     background:rgba(0,0,0,.5);border-radius:999px;
     padding:4px 11px;font-size:.8rem;font-weight:600;
   }
@@ -72,18 +74,21 @@
   .miniatures img{height:52px;width:78px;object-fit:cover;border-radius:7px;cursor:pointer;opacity:.55;flex:0 0 auto;border:2px solid transparent;}
   .miniatures img[aria-current="true"]{opacity:1;border-color:var(--or);}
 
-  /* Bouton de retour : en haut à droite, plus discret que la version en pied de page */
+  /* Bouton de retour : pilule FLOTTANTE, posee en haut a droite de la photo.
+     Meme aspect que sur les pages d'affiche (MatchTdT, Mission, Agenda,
+     Contact) : fond bleu #124b9a, forme de pilule, ombre portee. */
   .retour{
-    flex:0 0 auto;margin-left:auto;
-    display:inline-flex;align-items:center;gap:5px;
-    padding:6px 12px;border-radius:999px;text-decoration:none;
-    background:rgba(255,255,255,.14);color:#fff;
-    font-size:.78rem;font-weight:600;line-height:1;white-space:nowrap;
-    border:1px solid rgba(255,255,255,.28);
+    position:absolute;z-index:10;top:12px;right:14px;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 16px;border:0;border-radius:999px;text-decoration:none;
+    background:#124b9a;color:#fff;
+    font-size:.85rem;font-weight:700;line-height:1;white-space:nowrap;
+    box-shadow:0 4px 14px rgba(12,39,83,.38);
   }
-  .retour:active{background:rgba(255,255,255,.24);}
+  .retour:hover{background:#0b3672;}
+  .retour:active{background:#0b3672;}
   /* sous 360 px, le libellé s'efface : la flèche seule suffit */
-  @media (max-width:359px){ .retour .mot{display:none;} .retour{padding:6px 9px;} }
+  @media (max-width:359px){ .retour .mot{display:none;} .retour{padding:9px 12px;} }
   a:focus-visible,button:focus-visible{outline:3px solid var(--or);outline-offset:2px;}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
@@ -95,11 +100,11 @@
       <h1 id="titre">Galerie</h1>
       <p id="sous"></p>
     </div>
-    <a class="retour" href="./index.html">←<span class="mot">Retour</span></a>
   </header>
 
   <main>
     <div class="scene" id="scene">
+      <a class="retour" href="./index.html">←<span class="mot">Retour</span></a>
       <button class="fleche prev" id="prev" type="button" aria-label="Photo précédente" hidden>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
       </button>
