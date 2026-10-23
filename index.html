@@ -384,6 +384,18 @@
     html.push('<div class="grille">' + cases + "</div>");
   }
 
+  /* ---------- actus ----------
+     Même structure que « À la une » et « News » : un encart large
+     (logo + texte + flèche). Placé juste AVANT la section « News ». */
+  var ac = C.actus || {};
+  if (vrai(ac.afficher)) {
+    var carteActus = encart(ac);
+    if (carteActus) {
+      html.push(titre(ac.titreSection));
+      html.push(carteActus);
+    }
+  }
+
   /* ---------- news ----------
      Même structure que « À la une » : un encart large (logo + texte + flèche).
      Placé juste après les pavés « Comité de jumelage ». */
