@@ -384,6 +384,18 @@
     html.push('<div class="grille">' + cases + "</div>");
   }
 
+  /* ---------- deutsch unterricht ----------
+     Même structure que « À la une », « Actus » et « News » : un encart large
+     (logo + texte + flèche). Placé juste après les pavés du comité. */
+  var du = C.deutsch || {};
+  if (vrai(du.afficher)) {
+    var carteDeutsch = encart(du);
+    if (carteDeutsch) {
+      html.push(titre(du.titreSection));
+      html.push(carteDeutsch);
+    }
+  }
+
   /* ---------- actus ----------
      Même structure que « À la une » et « News » : un encart large
      (logo + texte + flèche). Placé juste AVANT la section « News ». */

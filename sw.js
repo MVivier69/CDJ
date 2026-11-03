@@ -14,7 +14,7 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v16";
+var VERSION = "cdj-v17";
 
 /* SOCLE : le strict necessaire au demarrage de l'application. Ces fichiers
    sont charges d'un bloc : si l'un d'eux manque sur GitHub, l'installation
@@ -42,7 +42,8 @@ var PAGES = [
   "./MissionCDJ.html",
   "./AgendaCDJ.html",
   "./ContactCDJ.html",
-  "./CDJ%20Actus/CDJ%20Actus.html"
+  "./CDJ%20Actus/CDJ%20Actus.html",
+  "./DeutschUnterricht/CDJ%20Deutsch%20Unterricht.html"
 ];
 
 self.addEventListener("install", function (e) {

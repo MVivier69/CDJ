@@ -80,7 +80,21 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     5. ACTUS
+     5. DEUTSCH UNTERRICHT
+     Cours d'allemand du comité. Même structure que « À la une », « Actus »
+     et « News » : un logo, un texte, un lien.
+     Pour masquer cette zone : afficher: false
+     ----------------------------------------------------------------------- */
+  deutsch: {
+    afficher: true,
+    titreSection: "Deutsch Unterricht",
+    texte: "Deutsch Unterricht",
+    image: "./images/pave/deutsch.png",
+    lien: "./DeutschUnterricht/CDJ%20Deutsch%20Unterricht.html"
+  },
+
+  /* -----------------------------------------------------------------------
+     6. ACTUS
      Actualités des jumelages franco-allemands, publiées chaque semaine.
      Même structure que « À la une » et « News » : un logo, un texte, un lien.
      Pour masquer cette zone : afficher: false
@@ -94,7 +108,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     6. NEWS
+     7. NEWS
      Même structure que « À la une » : un logo, un texte, un lien.
      Pour masquer cette zone : afficher: false
      ----------------------------------------------------------------------- */
@@ -107,7 +121,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     7. GALERIE PHOTOS
+     8. GALERIE PHOTOS
      Chaque pavé ouvre un carrousel (page carousel.html) qui affiche
      automatiquement les photos de son dossier.
 
@@ -148,7 +162,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     8. INFOS PRATIQUES
+     9. INFOS PRATIQUES
      ----------------------------------------------------------------------- */
   infos: {
     afficher: true,
@@ -175,7 +189,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     9. LIENS
+     10. LIENS
      ----------------------------------------------------------------------- */
   liens: {
     afficher: true,
@@ -186,7 +200,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     10. CARTE D'INSTALLATION
+     11. CARTE D'INSTALLATION
      ----------------------------------------------------------------------- */
   installation: {
     afficher: true,
@@ -198,7 +212,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     11. PIED DE PAGE
+     12. PIED DE PAGE
      ----------------------------------------------------------------------- */
   piedDePage: {
     afficher: true,
@@ -207,7 +221,7 @@ window.SB_CONFIG = {
   },
 
   /* -----------------------------------------------------------------------
-     12. COULEURS
+     13. COULEURS
      Relevées sur les fichiers fournis : bleu marine du logo et des
      pictogrammes, bleu et ambre de la bannière (thème franco-allemand).
      ----------------------------------------------------------------------- */
