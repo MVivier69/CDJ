@@ -89,7 +89,7 @@ window.SB_CONFIG = {
     afficher: true,
     titreSection: "Deutsch Unterricht",
     texte: "Deutsch Unterricht",
-    image: "./images/pave/deutsch.png",
+    image: "./images/deutsch.png",
     lien: "./DeutschUnterricht/CDJ%20Deutsch%20Unterricht.html"
   },
 
