@@ -14,7 +14,7 @@
       a toucher a la version. Le cache ne sert que de secours hors ligne.
    ========================================================================= */
 
-var VERSION = "cdj-v18";
+var VERSION = "cdj-v19";
 
 /* SOCLE : le strict necessaire au demarrage de l'application. Ces fichiers
    sont charges d'un bloc : si l'un d'eux manque sur GitHub, l'installation
@@ -97,7 +97,8 @@ self.addEventListener("fetch", function (e) {
   var contenu = url.pathname.indexOf("config.js") !== -1 ||
                 url.pathname.indexOf("/images/") !== -1 ||
                 decodeURIComponent(url.pathname).indexOf("/CDJ News/") !== -1 ||
-                decodeURIComponent(url.pathname).indexOf("/CDJ Actus/") !== -1;
+                decodeURIComponent(url.pathname).indexOf("/CDJ Actus/") !== -1 ||
+                decodeURIComponent(url.pathname).indexOf("/DeutschUnterricht/") !== -1;
 
   if (contenu) {
     /* reseau d'abord, cache en secours */
